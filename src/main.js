@@ -73,7 +73,7 @@ renderImage(hits);
 const list = document.querySelector('.list');
 const listHeight = list.getBoundingClientRect().height;
 window.scrollBy({
-  top:listHeight * 4,
+  top: listHeight * 4,
   behavior: "smooth"
 })
 }
@@ -100,12 +100,3 @@ function show (element) {
   element.style.display = 'flex';
 }
 
-function disable (loadButton, loader) {
-  loadButton.style.display = 'none';
-        loader.style.display = 'block';
-}
-
-function enable(loadButton, loader) {
-  loadButton.style.display = 'flex';
-        loader.style.display = 'none';
-}
