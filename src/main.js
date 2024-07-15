@@ -56,14 +56,6 @@ else {
      finally {
 form.reset()
      }
-    // loader.style.display = 'block';
-// getPicturesByQuery(inputValue)
-// .then(data => {renderImage(data.hits)
-// })
-// .catch((err)=>console.log(err))
-// .finally(() => {
-//   loader.style.display = 'none'
-// })
 }
 
 async function handleLoadMore(evt) {

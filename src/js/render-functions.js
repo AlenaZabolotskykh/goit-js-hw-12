@@ -29,7 +29,7 @@ export function renderImage(images) {
   </li>`)
     .join("");
 
-  gallery.innerHTML = listItems;
+  gallery.insertAdjacentHTML('beforeend', listItems);
 if (lightbox){
   lightbox.refresh();}
   else {lightbox}
