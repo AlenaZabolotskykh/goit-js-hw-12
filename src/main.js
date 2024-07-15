@@ -10,7 +10,8 @@ const loader = document.querySelector('.loader')
 const loadButton = document.querySelector('.button-load')
 const spinner = document.querySelector('.spinner')
 
-hide(loadButton);
+hide(loader);
+hide(loadButton)
 
 form.addEventListener('submit', handlerForm)
 
@@ -33,8 +34,8 @@ async function handlerForm (evt){
     });
     return;}
 
-    show(loadButton);
-    disable(loadButton,loader);
+    show(loader);
+    hide(loadButton);
 
     try{
 const {hits, total} = await getPicturesByQuery(params);
@@ -42,8 +43,9 @@ params.maxPage = Math.ceil(total / params.pageSize)
 renderImage(hits);
 
 if(hits.length > 0 && hits.length !== total) {
-enable(loadButton, loader);
-loadButton.addEventListener('click', handleLoadMore)
+show(loadButton);
+hide(loader);
+loadButton.addEventListener('click', handleLoadMore);
 }
 else {
   hide(loadButton);
@@ -60,8 +62,9 @@ form.reset()
 
 async function handleLoadMore(evt) {
   params.page += 1;
-disable(loadButton, loader);
-
+// disable(loadButton, loader);
+hide(loadButton);
+show(loader);
 
 try {
   const {hits} = await getPicturesByQuery(params);
@@ -70,15 +73,16 @@ renderImage(hits);
 const list = document.querySelector('.list');
 const listHeight = list.getBoundingClientRect().height;
 window.scrollBy({
-  top: listHeight * 4,
-  behavior: "smooth",
+  top:listHeight * 4,
+  behavior: "smooth"
 })
 }
 catch (err) {
 console.log(err);
 }
 finally {
-  enable(loadButton, loader) 
+  hide(loader);
+  show(loadButton);
 if(params.page === params.maxPage) {
   console.log("We're sorry, but you've reached the end of search results.");
   hide(loadButton);
@@ -88,20 +92,20 @@ if(params.page === params.maxPage) {
 }
 
 
-function hide(loadButton){
-loadButton.classList.add('is-hidden');
+function hide(element){
+  element.style.display = 'none';
 }
 
-function show (loadButton) {
-  loadButton.classList.remove('is-hidden');
+function show (element) {
+  element.style.display = 'flex';
 }
 
 function disable (loadButton, loader) {
-  loadButton.classList.add('is-hidden');
+  loadButton.style.display = 'none';
         loader.style.display = 'block';
 }
 
 function enable(loadButton, loader) {
-  loadButton.classList.remove('is-hidden');
+  loadButton.style.display = 'flex';
         loader.style.display = 'none';
 }
