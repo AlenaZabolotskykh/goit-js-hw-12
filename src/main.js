@@ -73,6 +73,13 @@ disable(loadButton, loader);
 try {
   const {hits} = await getPicturesByQuery(params);
 renderImage(hits);
+
+const list = document.querySelector('.list');
+const listHeight = list.getBoundingClientRect().height;
+window.scrollBy({
+  top:listHeight * 4,
+  behavior: "smooth"
+})
 }
 catch (err) {
 console.log(err);
