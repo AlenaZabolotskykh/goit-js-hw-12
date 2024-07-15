@@ -62,6 +62,7 @@ async function handleLoadMore(evt) {
   params.page += 1;
 disable(loadButton, loader);
 
+
 try {
   const {hits} = await getPicturesByQuery(params);
 renderImage(hits);
@@ -69,8 +70,8 @@ renderImage(hits);
 const list = document.querySelector('.list');
 const listHeight = list.getBoundingClientRect().height;
 window.scrollBy({
-  top:listHeight * 4,
-  behavior: "smooth"
+  top: listHeight * 4,
+  behavior: "smooth",
 })
 }
 catch (err) {
@@ -96,11 +97,11 @@ function show (loadButton) {
 }
 
 function disable (loadButton, loader) {
-loadButton.disabled = true;
+  loadButton.classList.add('is-hidden');
         loader.style.display = 'block';
 }
 
 function enable(loadButton, loader) {
-  loadButton.disabled = false;
+  loadButton.classList.remove('is-hidden');
         loader.style.display = 'none';
 }
