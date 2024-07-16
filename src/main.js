@@ -14,6 +14,7 @@ hide(loader);
 hide(loadButton)
 
 form.addEventListener('submit', handlerForm)
+loadButton.addEventListener('click', handleLoadMore);
 
 const params = {
   q: '',
@@ -45,7 +46,7 @@ renderImage(hits);
 if(hits.length > 0 && hits.length !== total) {
 show(loadButton);
 hide(loader);
-loadButton.addEventListener('click', handleLoadMore);
+
 }
 else {
   hide(loadButton);
