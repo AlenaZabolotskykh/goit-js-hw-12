@@ -49,11 +49,11 @@ loadButton.addEventListener('click', handleLoadMore);
 }
 else {
   hide(loadButton);
+  hide(loader)
 }
 
     }
     catch (err) {
-
     }
      finally {
 form.reset()
@@ -62,7 +62,6 @@ form.reset()
 
 async function handleLoadMore(evt) {
   params.page += 1;
-// disable(loadButton, loader);
 hide(loadButton);
 show(loader);
 
@@ -84,7 +83,9 @@ finally {
   hide(loader);
   show(loadButton);
 if(params.page === params.maxPage) {
-  console.log("We're sorry, but you've reached the end of search results.");
+  iziToast.show({
+    message: "We're sorry, but you've reached the end of search results."
+  });
   hide(loadButton);
   loadButton.removeEventListener('click', handleLoadMore);
 }
