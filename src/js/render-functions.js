@@ -19,7 +19,7 @@ export function renderImage(images) {
     const listItems = images
     .map(({largeImageURL, webformatURL, tags, likes, views, comments, downloads}) => `<li class="list">
   <a href="${largeImageURL}">
-    <img src='${webformatURL}' alt='${tags}'/>
+    <img src='${webformatURL}' alt='${tags}'height="152" width="360"/>
     <div class="item-wrap">
     <h2 class="item-text">Like<p>${likes}</p></h2>
     <h2 class="item-text">Views<p>${views}</p></h2>
